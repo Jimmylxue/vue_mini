@@ -1,3 +1,5 @@
+import { shapeFlags } from '../shared'
+
 export type DOMRenderer = {
 	createElement: () => void
 	createText: () => void
@@ -9,8 +11,13 @@ export type DOMRenderer = {
 }
 
 export type VNode = {
-	type: string
-	shapeFlag: string
+	el: any
+	component: any
+	key: any
+	type: any
+	shapeFlag: shapeFlags
+	props: Object
+	children: Array<any> | string
 }
 
 export type Render = (node: VNode, DOMSelector: Element) => void
