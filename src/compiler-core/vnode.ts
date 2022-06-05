@@ -11,7 +11,7 @@ export function createVNode(
 		el: null,
 		component: null,
 		key: props?.key,
-		type: type,
+		type: type, // {template: '<p>{{msg}}</p>', setup: ƒ}
 		props: props || {},
 		children,
 		shapeFlag: getShapeFlag(type), // 组件的类型
