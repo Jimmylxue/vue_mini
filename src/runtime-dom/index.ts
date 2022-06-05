@@ -1,4 +1,4 @@
-import { createRenderer } from '../compiler-core'
+import { createRenderer } from '../runtime-core'
 // import { DOMRenderer } from './const'
 import {
 	createElement,
