@@ -109,7 +109,8 @@ export function createRenderer(options: DOMRenderer) {
 
 		componentUpdateFn() // 先手动执行一次， 后面如果发生变化会自动触发这里
 
-		// instance.update =
+		// 这里将来接入 effect 响应式数据 所以 instance 实例会长存
+		instance.update = () => {}
 	}
 
 	function updateComponent() {}
