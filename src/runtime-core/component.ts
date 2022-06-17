@@ -86,10 +86,9 @@ function handleSetupResult(instance: Instance, setupResult) {
 
 function finishComponentSetup(instance: Instance) {
 	// 给 instance 设置 render
-
+	console.log('here~~~~~~~~~~~~~')
 	// 先取到用户设置的 component options
 	const Component = instance.type
-
 	if (!instance.render) {
 		// 如果 compile 有值 并且当然组件没有 render 函数，那么就需要把 template 编译成 render 函数
 		// 之所以这样 是因为 组件的配置项是可以直接写 render函数的
@@ -129,13 +128,3 @@ let compile
 export function registerRuntimeCompiler(_compile) {
 	compile = _compile
 }
-
-// function compileToFunction(template, options = {}) {
-//   const { code } = baseCompile(template, options);
-
-//   // 调用 compile 得到的代码在给封装到函数内，
-//   // 这里会依赖 runtimeDom 的一些函数，所以在这里通过参数的形式注入进去
-//   const render = new Function("Vue", code)(runtimeDom);
-
-//   return render;
-// }

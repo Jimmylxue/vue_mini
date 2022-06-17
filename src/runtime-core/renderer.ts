@@ -100,7 +100,7 @@ export function createRenderer(options: DOMRenderer) {
 		function componentUpdateFn() {
 			if (!instance.isMounted) {
 				// 这里就先简单的渲染出来吧~ 等看完编译模块和 响应式模块了再继续往这里深入写
-				container.textContent = instance.setupState.msg
+				container.textContent = instance.setupState.msg // 这块是简单写了 真实要根据虚拟DOM操作
 				instance.isMounted = true
 			} else {
 				// 执行更新 响应式数据如果发生变化会走这里

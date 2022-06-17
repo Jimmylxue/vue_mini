@@ -10,6 +10,7 @@ export function createAppAPI(render: Render) {
 			mount(rootContainer: Element) {
 				// 这个是真正的挂载方法
 				const node: VNode = createVNode(rootComponent) // 根据配置项 创建一个 vnode
+				console.log('render', render)
 				render(node, rootContainer)
 			},
 		}

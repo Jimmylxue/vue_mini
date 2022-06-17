@@ -35,3 +35,5 @@ export const createApp = (...args) => {
 	console.log('第一步，createApp')
 	return ensureRenderer().createApp(...args)
 }
+
+export * from '../runtime-core'
