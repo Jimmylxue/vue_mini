@@ -1,6 +1,7 @@
 import { VNode } from '../runtime-dom/const'
 import { Instance } from '../shared'
 import { PublicInstanceProxyHandlers } from './componentPublicInstance'
+
 export function createComponentInstance(instanceParams: {
 	node: VNode
 	parentComponent: any
@@ -64,6 +65,7 @@ function setupStatefulComponent(instance: Instance) {
 
 		// 处理setupResult
 		// handleSetupResult(instance, setupResult)
+		console.log('!!!!!!!!!!!')
 		handleSetupResult(instance, { msg: 'vue3——compiler' })
 	} else {
 		console.log('配置对象中无 setup 可能是optionAPI')
@@ -75,12 +77,13 @@ function handleSetupResult(instance: Instance, setupResult) {
 		// 如果返回的是 function 的话，那么绑定到 render 上
 		// 认为是 render 逻辑
 		// setup(){ return ()=>(h("div")) }
+		console.log('aaaa', setupResult)
 		instance.render = setupResult
 	} else if (typeof setupResult === 'object') {
 		// 这里先简单放一下吧 后面是要接入响应式系统的
 		instance.setupState = setupResult
 	}
-
+	// alert('222')
 	finishComponentSetup(instance)
 }
 
@@ -98,12 +101,14 @@ function finishComponentSetup(instance: Instance) {
 				// 实例的配置项中有配置 template
 				const template = Component.template
 				// 为组件绑定一个 render 渲染函数
+				// alert(compile)
 				Component.render = compile(template)
 			}
 		}
 
 		// 如果配置项中直接有 render函数 则直接绑定即可
 		instance.render = Component.render
+		// alert(instance.render)
 	}
 }
 
@@ -126,5 +131,8 @@ function createSetupContext(instance: Instance) {
 
 let compile
 export function registerRuntimeCompiler(_compile) {
+	// alert(22)
+	// alert(_compile)
 	compile = _compile
 }
+// alert(11)

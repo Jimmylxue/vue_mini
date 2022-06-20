@@ -49,5 +49,16 @@ function getShapeFlag(type: any) {
 		: shapeFlags.STATEFUL_COMPONENT
 }
 
+// 标准化 vnode 的格式
+// 其目的是为了让 child 支持多种格式
+export function normalizeVNode(child) {
+	// 暂时只支持处理 child 为 string 和 number 的情况
+	if (typeof child === 'string' || typeof child === 'number') {
+		return createVNode(Text, null, String(child))
+	} else {
+		return child
+	}
+}
+
 export const Text = Symbol('Text')
 export const Fragment = Symbol('Fragment')

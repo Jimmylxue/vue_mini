@@ -12,6 +12,7 @@ export type Instance = {
 	slots: any
 	ctx: any // context 对象
 	setupState: any // 存放 setup的返回值
+	subTree?: any
 	emit: () => void
 	render?: () => void
 	update?: () => void
