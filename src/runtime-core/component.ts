@@ -101,7 +101,7 @@ function finishComponentSetup(instance: Instance) {
 				// 实例的配置项中有配置 template
 				const template = Component.template
 				// 为组件绑定一个 render 渲染函数
-				// alert(compile)
+				alert(compile(template))
 				Component.render = compile(template)
 			}
 		}

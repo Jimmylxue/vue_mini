@@ -10,7 +10,7 @@ const enum TagType {
 }
 
 export function baseParse(template: string) {
-	const context = createParserContext(template)
+	const context = createParserContext(template) as TContent
 	return createRoot(parseChildren(context, []))
 }
 
@@ -63,7 +63,13 @@ function parseChildren(context: TContent, ancestors: any) {
 	return nodes
 }
 
-function createRoot(context) {}
+function createRoot(children) {
+	return {
+		type: NodeTypes.ROOT,
+		children,
+		helpers: [],
+	}
+}
 
 function isEnd(context: any, ancestors) {
 	// 检测标签的节点
